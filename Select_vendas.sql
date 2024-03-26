@@ -1,8 +1,6 @@
---4.1 - Continuando sqls ?? 13/03
-
 use vendas
 
---23.Consultar os pedidos que foram solicitados pelo cliente 2, registrados pelo funcionário 8 e conferidos pelo estagiário 5.
+--23.Consultar os pedidos que foram solicitados pelo cliente 2, registrados pelo funcionÃ¡rio 8 e conferidos pelo estagiÃ¡rio 5.
 
 select *
 from pedidos
@@ -25,7 +23,7 @@ select COUNT(*) [QTD_Vendida_Pedido_2]
 from itens_pedidos
 where ped_numero = 2
 
---27.	Consultar quantos pedidos foram registrados pelo funcionário 6
+--27.	Consultar quantos pedidos foram registrados pelo funcionÃ¡rio 6
 
 select COUNT(*) [QTD_Vendida_Fun_6]
 from pedidos
@@ -46,13 +44,13 @@ select * from pessoas
 select * from  pessoas p, clientes c
 where p.pes_codigo = c.pes_codigo
 
---31.	Consultar nome, CPF, renda e crédito de todos os clientes.
+--31.	Consultar nome, CPF, renda e crÃ©dito de todos os clientes.
 
 select pessoas.pes_nome, pessoas.pes_cpf, clientes.cli_renda, clientes.cli_credito
 from pessoas, clientes
 where pessoas.pes_codigo = clientes.pes_codigo
 
---32.	Consultar os produtos (descrição) e as quantidades vendidas no pedido 1.
+--32.	Consultar os produtos (descriÃ§Ã£o) e as quantidades vendidas no pedido 1.
 
 select produtos.prd_descricao, itens_pedidos.itp_qtd
 from itens_pedidos, produtos
@@ -60,7 +58,7 @@ where
 	itens_pedidos.prd_codigo= produtos.prd_codigo and
 	itens_pedidos.ped_numero = 1;
 
---33.	Consultar os produtos (descrição), quantidades vendidas, valores unitários e o valor de cada item do pedido 2.
+--33.	Consultar os produtos (descriÃ§Ã£o), quantidades vendidas, valores unitÃ¡rios e o valor de cada item do pedido 2.
 
 select produtos.prd_descricao, itens_pedidos.itp_qtd, produtos.prd_valor, (itens_pedidos.itp_qtd * produtos.prd_valor) [valor_item]
 from itens_pedidos, produtos
@@ -68,7 +66,7 @@ where
 	itens_pedidos.prd_codigo = produtos.prd_codigo and
 	itens_pedidos.ped_numero = 2
 
---34.	Consultar número, data, nome do funcionário, nome do cliente e nome do estagiário de cada pedido.
+--34.	Consultar nÃºmero, data, nome do funcionÃ¡rio, nome do cliente e nome do estagiÃ¡rio de cada pedido.
 
 SELECT 
     p.ped_numero, 
@@ -86,7 +84,7 @@ where
 	p.cli_codigo = cli.pes_codigo and
 	p.est_codigo = est.pes_codigo
 
---35.	Consultar código, nome, salário e o nome do supervisor de cada funcionário.
+--35.	Consultar cÃ³digo, nome, salÃ¡rio e o nome do supervisor de cada funcionÃ¡rio.
 
 select 
 	funcionarios.pes_codigo [codigo_funcionarios],
@@ -106,7 +104,7 @@ where
 select i. *, i.itp_qtd * itp_valor [Valor_Item]
 from itens_pedidos i
 
---37.	Consultar o total vendido (faturado) até o momento.
+--37.	Consultar o total vendido (faturado) atÃ© o momento.
 
 select
 	SUM (itp_qtd * itp_valor) As total_faturado
@@ -192,7 +190,7 @@ from
 group by
 	cli_codigo
 
---47.	Consultar quantos pedidos cada funcionário registrou.   
+--47.	Consultar quantos pedidos cada funcionÃ¡rio registrou.   
 
 select fun_codigo, COUNT(*) [qtd_pedidos_funcionarios]
 from 
@@ -239,7 +237,7 @@ where exists(
 );
 
 
---51.	Consultar as pessoas que são clientes. Usar exists.    
+--51.	Consultar as pessoas que sÃ£o clientes. Usar exists.    
 
 select * 
 from  
@@ -271,7 +269,7 @@ where exists (
 		SUM(i.itp_qtd * i.itp_valor) > 20 
 );
 
---53.	Consultar a data do sistema, e separadamente o ano, mês, dia, hora e minutos.
+--53.	Consultar a data do sistema, e separadamente o ano, mÃªs, dia, hora e minutos.
 
 select GETDATE() [Data_atual]
 select 
